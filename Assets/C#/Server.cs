@@ -9,7 +9,7 @@ public class Server : MonoBehaviourPunCallbacks
     public static Server instance;
     readonly private int multiplayerSceneIndex = 1;
 
-    public GameObject mainMenu, loadingScreen;
+    public GameObject mainMenu, loadingScreen, roomCreate, roomjoin;
 
     [SerializeField] private int roomSize;
     [SerializeField] private InputField nameField;
@@ -25,7 +25,9 @@ public class Server : MonoBehaviourPunCallbacks
     {
         nickname = nameField.text.ToString();
         PhotonNetwork.ConnectUsingSettings();
-        mainMenu.SetActive(false); loadingScreen.SetActive(true);
+        mainMenu.SetActive(false);
+        loadingScreen.SetActive(true);
+        //roomCreate.SetActive(true);
     }
 
     public override void OnConnectedToMaster()
@@ -36,6 +38,8 @@ public class Server : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        Debug.Log(PhotonNetwork.CurrentRoom);
+        
         if (PhotonNetwork.IsMasterClient)
             PhotonNetwork.LoadLevel(multiplayerSceneIndex);
     }
