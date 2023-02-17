@@ -40,9 +40,13 @@ public class Server : MonoBehaviourPunCallbacks
     {
         Debug.Log(PhotonNetwork.CurrentRoom);
         
-        if (PhotonNetwork.IsMasterClient)
-            PhotonNetwork.LoadLevel(multiplayerSceneIndex);
+       if (PhotonNetwork.IsMasterClient) PhotonNetwork.LoadLevel(multiplayerSceneIndex);
     }
 
     public override void OnDisconnected(DisconnectCause cause) => SceneManager.LoadScene("MainMenu");
+
+    public void QuitApp()
+    {
+        Application.Quit();
+    }
 }

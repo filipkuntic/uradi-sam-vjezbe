@@ -36,9 +36,10 @@ public class Shooting : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            if (view.AmOwner) view.TransferOwnership(PhotonNetwork.LocalPlayer.ActorNumber);
+
+           /* if (view.AmOwner) view.TransferOwnership(PhotonNetwork.LocalPlayer.ActorNumber);
             PhotonNetwork.Destroy(other.gameObject);
-            PhotonNetwork.Disconnect();
+            PhotonNetwork.Disconnect();*/
         }
     }
 }
