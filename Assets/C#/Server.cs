@@ -9,11 +9,15 @@ public class Server : MonoBehaviourPunCallbacks
     public static Server instance;
     readonly private int multiplayerSceneIndex = 1;
 
-    public GameObject mainMenu, loadingScreen, roomCreate, roomjoin;
+    public InputField roomNameIF;
+    [HideInInspector] public string imeSobe;
+
+    public GameObject mainMenu, loadingScreen, roomCreate, createNewRoom;
 
     [SerializeField] private int roomSize;
     [SerializeField] private InputField nameField;
     [HideInInspector] public string nickname;
+
 
     private void Start()
     {
@@ -44,6 +48,19 @@ public class Server : MonoBehaviourPunCallbacks
     }
 
     public override void OnDisconnected(DisconnectCause cause) => SceneManager.LoadScene("MainMenu");
+
+    public void CreateJoinRoomBtn()
+    {
+        mainMenu.SetActive(false);
+        roomCreate.SetActive(true);
+    }
+
+    public void CreateRoomBtn()
+    {
+        mainMenu.SetActive(false);
+        roomCreate.SetActive(false);
+        createNewRoom.SetActive(true);
+    }
 
     public void QuitApp()
     {
