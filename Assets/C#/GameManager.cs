@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     void Start() => CreatePlayer();
     private void CreatePlayer() => PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0, 0, 0), Quaternion.identity, 0);
 
-    private void OnGUI()
+   /* private void OnGUI()
     {
         if (Input.GetKey(KeyCode.Tab))
         {
@@ -29,5 +29,5 @@ public class GameManager : MonoBehaviour
             }
             GUILayout.EndScrollView();
         }
-    }
+    }*/
 }
